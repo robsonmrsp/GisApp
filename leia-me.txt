@@ -1,25 +1,25 @@
 Dia 09/07/2011
-1) Deu-se inÌcio ao projeto co a execuÁ„o do seguinte comando:
+1) Deu-se in√≠cio ao projeto co a execu√ß√£o do seguinte comando:
 	webAppCreator -overwrite -templates maven,sample,readme -out GisApp  com.gis.GisApp
 	Ajustes do codigo Gerado
-	-- Provavelmente voce precisar· criar as vari·veis de ambiente, uma delas È o M2_REPO
-	-- com relaÁ„o a vers„o, precisamos alterar a vers„o do java para as classes geradas(os .class s„o compativeis com 1.5) assim como o fonte. Mas isso pode ser um problema da minha workspace.
-	Uma vez criado o projeto, o mesmo foi disparado para testes(no modo dev) com um simples click com o bot„o direito sobre o descritor do modulo gwt e execuÁ„o do mesmo como GWT application.
+	-- Provavelmente voce precisar√° criar as vari√°veis de ambiente, uma delas √© o M2_REPO
+	-- com rela√ß√£o a vers√£o, precisamos alterar a vers√£o do java para as classes geradas(os .class s√£o compativeis com 1.5) assim como o fonte. Mas isso pode ser um problema da minha workspace.
+	Uma vez criado o projeto, o mesmo foi disparado para testes(no modo dev) com um simples click com o bot√£o direito sobre o descritor do modulo gwt e execu√ß√£o do mesmo como GWT application.
 
-2) Uma vez funcionando em modo desenvolvimento, foi executada a compilaÁ„o e empacotamento do projeto com o mavem.
+2) Uma vez funcionando em modo desenvolvimento, foi executada a compila√ß√£o e empacotamento do projeto com o mavem.
 	mvn gwt:clean
 	mvn gwt:run       # run development mode
 	mvn gwt:compile   # compile to javascript
 	mvn package       # generate a .war package ready to deploy
 
-Apos tudo isso a apicaÁ„o funcionou perfeitamente.
+Apos tudo isso a apica√ß√£o funcionou perfeitamente.
 
 prontos para o primeiro commit.
 
-CriaÁ„o do projeto usando o comando	
+Cria√ß√£o do projeto usando o comando	
 	webAppCreator -overwrite -templates maven,sample,readme -out GisApp  com.gis.GisApp
 	
-	execuÁ„o dos comandos abaixo	
+	execu√ß√£o dos comandos abaixo	
 	mvn gwt:clean
 	mvn gwt:run    
     mvn gwt:compile
