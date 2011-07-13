@@ -33,3 +33,37 @@ Ajustes:
 	mvn gwt:compile   # compile para javascript
 	mvn package       # Gera o .war package pronto para o deploy
   
+ #####################################################################################################
+ Dia 12/07/2011
+ #####################################################################################################
+  Hoje iremos adicionar as bibliotecas do spring-framework para a injeção de dependencia.
+  
+   1-  No pom.xml adicionar as linhas que definem o spring 3.0 como dependencia de nosso projeto
+   aninhada a tag <properties>, adicione a seguinte linha
+   
+   	   <springVersion>3.0.5.RELEASE</springVersion>
+ 		
+aninhada a tag <dependencies>, adicione a seguinte linha
+ 		core do spring	
+ 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+
+as seguinte são necessárias pelo fato de termos uma aplicação WEB	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+  
+ 2- Apás essa pequena edição no pom.xml, podemos executar:
+ mvn eclipse:eclipse 
+ pronto, já estamos prontos para programar com o spring em nossa aplicação. 
