@@ -1,0 +1,75 @@
+Dia 09/07/2011
+1) Deu-se início ao projeto co a execução do seguinte comando:
+	webAppCreator -overwrite -templates maven,sample,readme -out GisApp  com.gis.GisApp
+	Ajustes do codigo Gerado
+	-- Provavelmente voce precisará criar as variáveis de ambiente, uma delas é o M2_REPO
+	-- com relação a versão, precisamos alterar a versão do java para as classes geradas(os .class são compativeis com 1.5) assim como o fonte. Mas isso pode ser um problema da minha workspace.
+	Uma vez criado o projeto, o mesmo foi disparado para testes(no modo dev) com um simples click com o botão direito sobre o descritor do modulo gwt e execução do mesmo como GWT application.
+
+2) Uma vez funcionando em modo desenvolvimento, foi executada a compilação e empacotamento do projeto com o mavem.
+	mvn gwt:clean
+	mvn gwt:run       # run development mode
+	mvn gwt:compile   # compile to javascript
+	mvn package       # generate a .war package ready to deploy
+
+Apos tudo isso a apicação funcionou perfeitamente.
+
+prontos para o primeiro commit.
+
+Criação do projeto usando o comando	
+	webAppCreator -overwrite -templates maven,sample,readme -out GisApp  com.gis.GisApp
+	
+	execução dos comandos abaixo	
+	mvn gwt:clean
+	mvn gwt:run    
+    mvn gwt:compile
+    mvn package   
+##################   Primeiro commit:  #################
+Global setup:
+ Set up git
+  git config --global user.name "Marcio Robson"
+  git config --global user.email robsonmrsp@gmail.com
+Next steps:
+  mkdir GisApp
+  cd GisApp
+  git init
+  touch README
+  git add README
+  git commit -m 'first commit'
+  git remote add origin git@github.com:robsonmrsp/GisApp.git
+  git push -u origin master
+
+ #####################################################################################################################
+ Próximos passos!
+ -- Adicionar injeção de dependencia com spring 3
+ -- Adicionar acesso a dados com Hibernate.
+ -- uma vez ambos funcionado, adicionar o mapa e em seguida postgis.
+ #####################################################################################################################
+ Dia 12/07/2011  Hoje iremos adicionar o Spring ao nosso projeto:
+ Passos:
+ 1-  No pom.xml adicionar as linhas que definem o spring 3.0 como dependencia de nosso projeto
+ 			<springVersion>3.0.5.RELEASE</springVersion>
+ 		
+ 		core do spring	
+ 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+
+as seguinte são necessárias pelo fato de termos uma aplicação WEB	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+ 			
+ 
+  
+  
