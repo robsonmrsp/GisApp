@@ -1,2 +1,0 @@
-# Module com.gis.GisAppJUnit
-# RPC service class, partial path of RPC policy file
