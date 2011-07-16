@@ -1,29 +1,38 @@
 Dia 09/07/2011
-1) Deu-se início ao projeto co a execução do seguinte comando:
-	webAppCreator -overwrite -templates maven,sample,readme -out GisApp  com.gis.GisApp
-	Ajustes do codigo Gerado
-	-- Provavelmente voce precisará criar as variáveis de ambiente, uma delas é o M2_REPO
-	-- com relação a versão, precisamos alterar a versão do java para as classes geradas(os .class são compativeis com 1.5) assim como o fonte. Mas isso pode ser um problema da minha workspace.
-	Uma vez criado o projeto, o mesmo foi disparado para testes(no modo dev) com um simples click com o botão direito sobre o descritor do modulo gwt e execução do mesmo como GWT application.
+	Este projeto destina-se ao estudo/ensino de algumas tecnologias relacionadas ao 
+desenvolvimento de software focado, basicamente, na plataforma java.O front-end será 
+feito em GWT(e associados). A persistência de dados será feita com ajuda do Hibernate 
+e a injeção de dependencias será feita pelo Spring-framework, com as annotations 
+definidas pelo JSR 330.
 
-2) Uma vez funcionando em modo desenvolvimento, foi executada a compilação e empacotamento do projeto com o mavem.
+0) basicamente o que iremos fazer agora será a criação de um projeto de testes com GWT e 
+adicionar as funcionalidades basicas esperadas em essa aplicação, a citar, injeção de 
+dependencia, persistência, boas praticas(assim espero) de desenvolvimento. 
+
+1) Para criar o projeto básico usaremos o webAppCreator do GWT que fica na pasta em que 
+descompactamos o gwt-2.3.0.zip(este era a ultima versão no momento em que escreviamos este 
+texto). Segue o comando:  
+	webAppCreator -overwrite -templates maven,sample,readme -out GisApp  com.gis.GisApp
+		
+2) Devemos, agora, executar o maven para baixar as dependencias e os plugins  necessários.
+	mvn eclipse:eclipse
+3) Importe para  o eclipse o projeto criado: (como fazer:> File/import... Existing Projects into Workspace...(escolha a pasta GisApp onde quer que tenha sido gravada) ) 
+
+Ajustes:
+	-- Provavelmente voce precisará criar as variáveis de ambiente, uma delas é o M2_REPO
+	-- com relação a versão, precisamos alterar a versão do java para as classes geradas
+	   (os .class são compativeis com 1.5) assim como o fonte. Mas isso pode ser um problema 
+	   SOMENTE da minha workspace, caso não tenha problema, desconsidere este passo.
+
+4) caso o passo anterior tenha ocorrido perfeitamente, voce pode executar os dois outros 
+	comandos para executar a aplicação..	
 	mvn gwt:clean
 	mvn gwt:run       # run development mode
-	mvn gwt:compile   # compile to javascript
-	mvn package       # generate a .war package ready to deploy
 
-Apos tudo isso a apicação funcionou perfeitamente.
+5) e para empacotar e publicar no java-web-container de sua preferencia use os seguintes comandos
+	mvn gwt:compile   # compile para javascript
+	mvn package       # Gera o .war package pronto para o deploy
 
-prontos para o primeiro commit.
-
-Criação do projeto usando o comando	
-	webAppCreator -overwrite -templates maven,sample,readme -out GisApp  com.gis.GisApp
-	
-	execução dos comandos abaixo	
-	mvn gwt:clean
-	mvn gwt:run    
-    mvn gwt:compile
-    mvn package   
 ##################   Primeiro commit:  #################
 Global setup:
  Set up git
@@ -48,7 +57,7 @@ Next steps:
  Dia 12/07/2011  Hoje iremos adicionar o Spring ao nosso projeto:
  Passos:
  1-  No pom.xml adicionar as linhas que definem o spring 3.0 como dependencia de nosso projeto
-   	   <springVersion>3.0.5.RELEASE</springVersion>
+ 			<springVersion>3.0.5.RELEASE</springVersion>
  		
  		core do spring	
  		<dependency>

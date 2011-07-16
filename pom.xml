@@ -12,7 +12,7 @@
 
 	<properties>
 		<!-- Convenience property to set the GWT version -->
-		<springVersion>3.0.5.RELEASE</springVersion>
+		<springVersion>3.0.0.RELEASE</springVersion>
 
 		<gwtVersion>2.3.0</gwtVersion>
 
