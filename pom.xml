@@ -91,7 +91,10 @@
 
 	<build>
 		<!-- Generate compiled stuff in the folder used for developing mode -->
-		<outputDirectory>target/www/WEB-INF/classes</outputDirectory>
+<!--somente para facilitar a vida ao desenvolver com eclipse + spring + uma longa estória com 
+classloaders -->
+		<!-- <outputDirectory>target/www/WEB-INF/classes</outputDirectory> --> 
+                <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<plugins>
 
