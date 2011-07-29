@@ -13,6 +13,7 @@
 	<properties>
 		<!-- Convenience property to set the GWT version -->
 		<springVersion>3.0.0.RELEASE</springVersion>
+		<hibernateVersion>3.6.5.Final</hibernateVersion>
 
 		<gwtVersion>2.3.0</gwtVersion>
 
@@ -26,6 +27,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
 			<version>${springVersion}</version>
 		</dependency>
 
@@ -47,6 +54,41 @@
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernateVersion}</version>
+		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-validator</artifactId> -->
+<!-- 			<version>4.0.0.GA</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<!-- Com essa linha abaixo, o arquivo de driver não foi copiado para a 
+				pasta lib da aplicaÃ§Ã£o, consequentemente o war nÃ£o foi completo -->
+			<!-- <scope>provided</scope> -->
+			<version>8.4-701.jdbc3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.hibernatespatial</groupId>
+			<artifactId>hibernate-spatial-postgis</artifactId>
+			<version>1.1</version>
 		</dependency>
 
 
@@ -91,10 +133,10 @@
 
 	<build>
 		<!-- Generate compiled stuff in the folder used for developing mode -->
-<!--somente para facilitar a vida ao desenvolver com eclipse + spring + uma longa estória com 
-classloaders -->
-		<!-- <outputDirectory>target/www/WEB-INF/classes</outputDirectory> --> 
-                <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		<!--somente para facilitar a vida ao desenvolver com eclipse + spring + 
+			uma longa estória com classloaders -->
+		<!-- <outputDirectory>target/www/WEB-INF/classes</outputDirectory> -->
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<plugins>
 
@@ -231,4 +273,36 @@ classloaders -->
 
 		</plugins>
 	</build>
+	<!--Repositórios -->
+	<repositories>
+		<!-- add JBOSS repository for easy access to Hibernate libraries -->
+		<repository>
+			<id>JBOSS</id>
+			<url>http://repository.jboss.com/maven2</url>
+		</repository>
+		<repository>
+			<id>JBOSS2</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+		</repository>
+
+		<repository>
+			<id>maven</id>
+			<name>central</name>
+			<url>http://repo2.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>jahia</id>
+			<name>jahiaMaven</name>
+			<url>http://maven.jahia.org/maven2/</url>
+		</repository>
+		<!--Para uso do hibernate spatial (ABAIXO) -->
+		<repository>
+			<id>OSGEO GeoTools repo</id>
+			<url>http://download.osgeo.org/webdav/geotools</url>
+		</repository>
+		<repository>
+			<id>Hibernate Spatial repo</id>
+			<url>http://www.hibernatespatial.org/repository</url>
+		</repository>
+	</repositories>
 </project>
