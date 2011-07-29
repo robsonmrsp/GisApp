@@ -69,7 +69,8 @@ as seguinte são necessárias pelo fato de termos uma aplicação WEB
 			<artifactId>spring-webmvc</artifactId>
 			<version>${springVersion}</version>
 		</dependency>
- 			
  
+ #######	
+ Tentar usar FluentInterface
   
   

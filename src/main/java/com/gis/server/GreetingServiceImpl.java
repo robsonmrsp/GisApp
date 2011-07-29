@@ -1,10 +1,22 @@
 package com.gis.server;
 
+import java.util.Date;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gis.client.GreetingService;
+import com.gis.server.dao.DaoGeometricShape;
+import com.gis.server.entities.GeometricShape;
+import com.gis.server.entities.GeometricShapeType;
 import com.gis.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.PrecisionModel;
 
 /**
  * The server side implementation of the RPC service.
@@ -14,6 +26,10 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 //public class GreetingServiceImpl extends RemoteServiceServlet implements   GreetingService {
 public class GreetingServiceImpl  extends RemoteServiceServlet  implements   GreetingService {
 
+	@Inject
+	DaoGeometricShape daoGeometricShape;
+
+	@Transactional
 	public String greetServer(String input) throws IllegalArgumentException {
 		// Verify that the input is valid. 
 		if (!FieldVerifier.isValidName(input)) {
@@ -22,16 +38,41 @@ public class GreetingServiceImpl  extends RemoteServiceServlet  implements   Gre
 			throw new IllegalArgumentException(
 			"Name must be at least 4 characters long");
 		}
+		
+		try{
+		GeometricShape geometricShape = new GeometricShape();
+		geometricShape.setName("Quadrado_1");
+		
+		geometricShape.setCreationDate(new Date());
+		geometricShape.setVertices(getGeometric());
+		geometricShape.setType(GeometricShapeType.SQUARE);
+		
+		daoGeometricShape.save(geometricShape);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return "Erro ao criar/salvar objeto!";
+		}
+		return "Objeto criado/salvo com sucesso!";
+		
+		
 
-		String serverInfo = "nada";//getServletContext().getServerInfo();
-		String userAgent = "deb+novo" ;//getThreadLocalRequest().getHeader("User-Agent");
+//		String serverInfo = "nada";//getServletContext().getServerInfo();
+//		String userAgent = "deb+novo" ;//getThreadLocalRequest().getHeader("User-Agent");
+//
+//		// Escape data from the client to avoid cross-site script vulnerabilities.
+//		input = escapeHtml(input);
+//		userAgent = escapeHtml(userAgent);
+//
+//		return "Hello, " + input + "!<br><br>I am running " + serverInfo
+//		+ ".<br><br>It looks like you are using:<br>" + userAgent;
+	}
 
-		// Escape data from the client to avoid cross-site script vulnerabilities.
-		input = escapeHtml(input);
-		userAgent = escapeHtml(userAgent);
-
-		return "Hello, " + input + "!<br><br>I am running " + serverInfo
-		+ ".<br><br>It looks like you are using:<br>" + userAgent;
+	private Geometry getGeometric() {
+//		usarmos  o SRID padrão de 4326, que é mapeado para o sistema de referência espacial WGS 84 
+		GeometryFactory geoFactory = new GeometryFactory(new PrecisionModel(PrecisionModel.FLOATING), 4326);
+		Coordinate[]  coordinates = new Coordinate[]{new Coordinate(0,0), new Coordinate(1,1), new Coordinate(2,2), new Coordinate(-1,-2)};
+		Geometry geo = geoFactory.createLineString(coordinates);
+		return geo;
 	}
 
 	/**

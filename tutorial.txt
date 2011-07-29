@@ -64,6 +64,9 @@ as seguinte são necessárias pelo fato de termos uma aplicação WEB
 			<version>${springVersion}</version>
 		</dependency>
   
- 2- Apás essa pequena edição no pom.xml, podemos executar:
+ 2- Após essa pequena edição no pom.xml, podemos executar:
  mvn eclipse:eclipse 
  pronto, já estamos prontos para programar com o spring em nossa aplicação. 
+ 
+ #####################################################################################################
+ Adicionando as dependencias do Hibernate a nossa aplicação
