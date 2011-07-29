@@ -69,61 +69,7 @@ as seguinte são necessárias pelo fato de termos uma aplicação WEB
 			<artifactId>spring-webmvc</artifactId>
 			<version>${springVersion}</version>
 		</dependency>
+ 			
  
-#####################################################################################################
-Adicionar o framework de OR , neste caso usaremos o hibernate.
-
-Adicionando as dependencias ao pom
-
-Spring orm para que o spring se encarregue da sessionFactory
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${springVersion}</version>
-		</dependency>
-
- dbcp para que tenhamos um dataSource tambem gerido pelo spring, concentrando assim as configurações, não precisando faze-las no container web. Tomcat por exemplo,
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
-		</dependency>
- O hibernate core, este por sua vez carrega uma série de outras bibliotecas como dependencias. Mais a frete falaremos delas e de um GRANDE problema para o desenvolvimento. 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernateVersion}</version>
-		</dependency>
-O hibernate Spatial, já que nossa aplicação irá tratar dados espaciais.
-		<dependency>
-			<groupId>org.hibernatespatial</groupId>
-			<artifactId>hibernate-spatial-postgis</artifactId>
-			<version>1.1</version>
-		</dependency>
-O driver do postgres 
- 		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<!-- <scope>provided</scope> -->
-			<version>8.4-701.jdbc3</version>
-		</dependency>
-
-Nota: Por mais que o maven arrume o classpath da aplicação, 
-por algum motivo MAGICO algumas classes não são carregadas pelo jetty em modo debugue, por exemplo, os drivers do postgres, 
-as classes do slfj, do validator do hibernate, etc. Para resolver este problema criaremos uma pasta lib e adicionaremos os pacotes que as classes dadas como faltantes. 
-alguns pacotes são(observe o "lib" prefixando alguns pacotes. Isso ocorre pois o eclipse acusa um erro extranho e só assim pra resolver):
-
-		slf4j-api-1.6.1.jar   
-		hibernate-validator-4.0.0.GA.jar
-		lib-hibernate-spatial-postgis-1.1.jar 
-		lib-slf4j-api-1.6.1.jar
-		postgis-1.5.0.jar
-		slf4j-nop-1.6.1.jar
-		
-		O mesmo vale para qualquer outra biblioteca que seja carregada pelo spring ou hibernate(pelo menos foi o que pudemos notar)
-		
- 
-		
-		
-
- 
+  
+  
