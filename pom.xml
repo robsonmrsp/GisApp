@@ -136,6 +136,8 @@
 		<!--somente para facilitar a vida ao desenvolver com eclipse + spring + 
 			uma longa estória com classloaders -->
 		<!-- <outputDirectory>target/www/WEB-INF/classes</outputDirectory> -->
+		
+		<!-- O padrão do hosted mode é output/war-->
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<plugins>
@@ -177,7 +179,8 @@
 					<!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
 					<runTarget>GisApp.html</runTarget>
 					<!-- Location of the develop-mode web application structure (gwt:run). -->
-					<hostedWebapp>target/www</hostedWebapp>
+					<!-- <hostedWebapp>target/www</hostedWebapp> alteração de codigo ###-->					
+					<hostedWebapp>src/main/webapp</hostedWebapp>
 					<!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
 					<compileReport>true</compileReport>
 				</configuration>
@@ -200,7 +203,8 @@
 					<systemProperties>
 						<property>
 							<name>gwt.args</name>
-							<value>-out target/www</value>
+							<!-- <value>-out target/www</value> -->
+							<value>-out src/main/webapp</value> 
 						</property>
 					</systemProperties>
 				</configuration>
@@ -217,7 +221,8 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>target/www</outputDirectory>
+							<!-- <outputDirectory>target/www</outputDirectory> -->
+							<outputDirectory>src/main/webapp</outputDirectory> 							
 							<resources>
 								<resource>
 									<directory>src/main/webapp</directory>
@@ -270,7 +275,6 @@
 					</additionalProjectnatures>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 	<!--Repositórios -->
