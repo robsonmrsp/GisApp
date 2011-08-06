@@ -1,7 +1,6 @@
 
 package com.gis.server;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
@@ -31,8 +30,14 @@ public class GwtDispatcherServlet extends RemoteServiceServlet{
 		if (!(beanService instanceof RemoteService)) {
 			throw new IllegalArgumentException("Spring bean is not a GWT RemoteService: " + serviceName + " (" + beanService + ")");
 		}
-		if(beanService instanceof HttpServlet){
-			
+		if(beanService instanceof HasServletRequest){
+			((HasServletRequest)beanService).setServletRequest(getThreadLocalRequest());
+		}
+		if(beanService instanceof HasServletConfig){
+			((HasServletConfig)beanService).setServletConfig(getServletConfig());
+		}
+		if(beanService instanceof HasServletContext){
+			((HasServletContext)beanService).setServletContext(getServletContext());
 		}
 		LOGER.debug("Bean for service " + serviceName + " is " + beanService);
 		return beanService;

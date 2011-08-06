@@ -135,7 +135,13 @@
 		<!-- Generate compiled stuff in the folder used for developing mode -->
 		<!--somente para facilitar a vida ao desenvolver com eclipse + spring + 
 			uma longa estória com classloaders -->
-		<!-- <outputDirectory>target/www/WEB-INF/classes</outputDirectory> -->
+			
+<!-- 		<outputDirectory>target/www/WEB-INF/classes</outputDirectory> -->
+		
+		
+		
+		
+		
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<plugins>
@@ -218,6 +224,7 @@
 						</goals>
 						<configuration>
 							<outputDirectory>target/www</outputDirectory>
+<!-- 						<outputDirectory>src/main/webapp</outputDirectory> -->
 							<resources>
 								<resource>
 									<directory>src/main/webapp</directory>

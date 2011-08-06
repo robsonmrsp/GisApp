@@ -18,12 +18,13 @@ import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.PrecisionModel;
 
 /**
- * The server side implementation of the RPC service.
+ * A intenção inicial é que qualquer classe possa atender a uma requisição GWT, mas para o 
+ * caso daqueles que querem acessar os objetos de uma aplicação servlet, HttpServletRequest, 
+ * ServletConfig, ServletContext e mais algum, deve herdar a classe HttpServletObject caso não queira, 
+ * simplesmente    public class GreetingServiceImpl  implements  GreetingService funcionará
  */
-@SuppressWarnings("serial")
 @Named("greetingService")
-//public class GreetingServiceImpl extends RemoteServiceServlet implements   GreetingService {
-public class GreetingServiceImpl  extends RemoteServiceServlet  implements   GreetingService {
+public class GreetingServiceImpl  extends HttpServletObject  implements  GreetingService{
 
 	@Inject
 	DaoGeometricShape daoGeometricShape;
@@ -51,19 +52,16 @@ public class GreetingServiceImpl  extends RemoteServiceServlet  implements   Gre
 			e.printStackTrace();
 			return "Erro ao criar/salvar objeto!";
 		}
-		return "Objeto criado/salvo com sucesso!";
 		
 		
 
-//		String serverInfo = "nada";//getServletContext().getServerInfo();
-//		String userAgent = "deb+novo" ;//getThreadLocalRequest().getHeader("User-Agent");
-//
-//		// Escape data from the client to avoid cross-site script vulnerabilities.
-//		input = escapeHtml(input);
-//		userAgent = escapeHtml(userAgent);
-//
-//		return "Hello, " + input + "!<br><br>I am running " + serverInfo
-//		+ ".<br><br>It looks like you are using:<br>" + userAgent;
+		//As linhas abaixo funcionaram pois herdamos da classe HttpServletObject
+		String serverInfo = getServletContext().getServerInfo();
+		String userAgent  = getServletRequest().getHeader("User-Agent");
+
+		input = escapeHtml(input);
+		userAgent = escapeHtml(userAgent);
+		return "Objeto criado/salvo com sucesso!" + serverInfo + " " + userAgent;
 	}
 
 	private Geometry getGeometric() {
