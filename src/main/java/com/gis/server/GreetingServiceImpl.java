@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gis.client.GreetingService;
 import com.gis.server.dao.DaoGeometricShape;
+import com.gis.server.dao.DaoUser;
 import com.gis.server.dao.GeometricShapeType;
+import com.gis.server.entities.Endereco;
 import com.gis.server.entities.GeometricShape;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.gis.server.entities.User;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
@@ -24,12 +26,13 @@ import com.vividsolutions.jts.geom.PrecisionModel;
  * simplesmente    public class GreetingServiceImpl  implements  GreetingService funcionará
  */
 @Named("greetingService")
-public class GreetingServiceImpl  extends HttpServletObject  implements  GreetingService{
+public class GreetingServiceImpl extends HttpServletObject implements  GreetingService{
 
 	@Inject
 	DaoGeometricShape daoGeometricShape;
-
-	@Transactional
+	@Inject
+	DaoUser daoUser;
+//	@Transactional
 	public String greetServer(String input) throws IllegalArgumentException {
 ////		// Verify that the input is valid. 
 ////		if (!FieldVerifier.isValidName(input)) {
@@ -52,8 +55,10 @@ public class GreetingServiceImpl  extends HttpServletObject  implements  Greetin
 			e.printStackTrace();
 			return "Erro ao criar/salvar objeto!";
 		}
-		
-		
+		User us = daoUser.find(1);
+		for(Endereco e : us.getEnderecos()){
+			System.out.println(e.getLogradouro());
+		}
 
 		//As linhas abaixo funcionaram pois herdamos da classe HttpServletObject
 		String serverInfo = getServletContext().getServerInfo();

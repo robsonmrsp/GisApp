@@ -48,6 +48,12 @@
 			<version>${springVersion}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+		</dependency>
+
 		<!-- JSR 330 é a especificação da injeção de dependencia. Significa que 
 			não pretendemos usar as Annotations do Spring -->
 		<dependency>
@@ -69,11 +75,11 @@
 			<version>${hibernateVersion}</version>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.hibernate</groupId> -->
-<!-- 			<artifactId>hibernate-validator</artifactId> -->
-<!-- 			<version>4.0.0.GA</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-validator</artifactId> -->
+		<!-- <version>4.0.0.GA</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>postgresql</groupId>
@@ -136,12 +142,20 @@
 		<!--somente para facilitar a vida ao desenvolver com eclipse + spring + 
 			uma longa estória com classloaders -->
 		<!-- <outputDirectory>target/www/WEB-INF/classes</outputDirectory> -->
-		
-		<!-- O padrão do hosted mode é output/war-->
+
+		<!-- O padrão do hosted mode é output/war -->
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
-		<plugins>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
 
+		<plugins>
 			<!-- GWT Maven Plugin -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -179,8 +193,8 @@
 					<!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
 					<runTarget>GisApp.html</runTarget>
 					<!-- Location of the develop-mode web application structure (gwt:run). -->
-					<hostedWebapp>target/www</hostedWebapp> 					
-<!-- 					<hostedWebapp>src/main/webapp</hostedWebapp> -->
+					<hostedWebapp>target/www</hostedWebapp>
+					<!-- <hostedWebapp>src/main/webapp</hostedWebapp> -->
 					<!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
 					<compileReport>true</compileReport>
 				</configuration>
@@ -204,7 +218,7 @@
 						<property>
 							<name>gwt.args</name>
 							<value>-out target/www</value>
-<!-- 							<value>-out src/main/webapp</value>  -->
+							<!-- <value>-out src/main/webapp</value> -->
 						</property>
 					</systemProperties>
 				</configuration>
@@ -222,7 +236,7 @@
 						</goals>
 						<configuration>
 							<outputDirectory>target/www</outputDirectory>
-<!-- 						<outputDirectory>src/main/webapp</outputDirectory> 	 -->
+							<!-- <outputDirectory>src/main/webapp</outputDirectory> -->
 							<resources>
 								<resource>
 									<directory>src/main/webapp</directory>

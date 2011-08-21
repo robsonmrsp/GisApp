@@ -13,7 +13,6 @@ public class HttpServletObject implements HasServletConfig, HasServletRequest, H
 	private ServletContext servletContext;
 	private HttpServletRequest servletRequest;
 	private ServletConfig servletConfig;
-	
 	@Override
 	public ServletContext getServletContext() {
 		return servletContext;
@@ -22,7 +21,6 @@ public class HttpServletObject implements HasServletConfig, HasServletRequest, H
 	@Override
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
-
 	}
 
 	@Override
@@ -48,5 +46,4 @@ public class HttpServletObject implements HasServletConfig, HasServletRequest, H
 		this.servletConfig = servletConfig;
 
 	}
-
 }

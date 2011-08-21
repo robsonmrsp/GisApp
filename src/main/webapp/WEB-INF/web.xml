@@ -18,6 +18,17 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<filter-mapping>
+		<filter-name>OSVF</filter-name>
+		<url-pattern>/gisapp/services/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>OSVF</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+
+
 	<!-- para carregar os -->
 	<!-- Default page to serve -->
 	<welcome-file-list>
