@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- este arquivo de configuração, destina-se a padronização do mecanismo de logs da aplicação-->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="DEBUG" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/folderlistener-debug.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10240KB" />
+		<param name="MaxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="v1.3.1 -- %-5p -- %d{dd/MM/yyyy} %d{HH:mm:ss} - %c{1} -- %t -- %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="DEBUG" />
+		</filter>
+	</appender>
+
+	<appender name="INFO" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/folderlistener-info.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10240KB" />
+		<param name="MaxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="v1.3.1 -- %-5p -- %d{dd/MM/yyyy} %d{HH:mm:ss} - %c{1} -- %t -- %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+			<param name="LevelMax" value="INFO" />
+		</filter>
+	</appender>
+
+	<appender name="WARN" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/folderlistener-warn.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10240KB" />
+		<param name="MaxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="v1.3.1 -- %-5p -- %d{dd/MM/yyyy} %d{HH:mm:ss} - %c{1} -- %t -- %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="WARN" />
+			<param name="LevelMax" value="WARN" />
+		</filter>
+	</appender>
+
+	<appender name="ERROR" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/folderlistener-error.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10240KB" />
+		<param name="MaxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="v1.3.1 -- %-5p -- %d{dd/MM/yyyy} %d{HH:mm:ss} - %c{1} -- %t -- %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="ERROR" />
+		</filter>
+	</appender>
+	
+	
+	<logger name="org.hibernate">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.hibernate.SQL">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.hibernate.type">
+		<level value="error" />
+	</logger>
+	
+	<logger name="org.hibernatespatial">
+		<level value="error" />
+	</logger>
+	
+	<logger name="log4j.logger.net.sf.hibernate.ps.PreparedStatementCache">
+		<level value="error" />
+	</logger>
+	
+	<logger name="com.mchange.v2.c3p0.impl">
+		<level value="error" />
+	</logger>
+
+	<logger name="com.mchange.v2.resourcepool">
+		<level value="error" />
+	</logger>
+
+	<logger name="com.mchange.v2.c3p0">
+		<level value="error" />
+	</logger>
+	
+	<logger name="com.mchange.v2.log">
+		<level value="error" />
+	</logger>
+	<root>
+		<priority value="CONSOLE" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="DEBUG" />
+		<appender-ref ref="INFO" />
+		<appender-ref ref="WARN" />
+		<appender-ref ref="ERROR" />
+	</root>
+
+
+</log4j:configuration>

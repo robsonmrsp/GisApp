@@ -2,10 +2,10 @@ package com.gis.server;
 
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.springframework.transaction.annotation.Transactional;
 
 import com.gis.client.GreetingService;
 import com.gis.server.dao.DaoGeometricShape;
@@ -20,10 +20,10 @@ import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.PrecisionModel;
 
 /**
- * A intenÁ„o inicial È que qualquer classe possa atender a uma requisiÁ„o GWT, mas para o 
- * caso daqueles que querem acessar os objetos de uma aplicaÁ„o servlet, HttpServletRequest, 
- * ServletConfig, ServletContext e mais algum, deve herdar a classe HttpServletObject caso n„o queira, 
- * simplesmente    public class GreetingServiceImpl  implements  GreetingService funcionar·
+ * A inten√ß√£o inicial √© que qualquer classe possa atender a uma requisi√ß√£o GWT, mas para o 
+ * caso daqueles que querem acessar os objetos de uma aplica√ß√£o servlet, HttpServletRequest, 
+ * ServletConfig, ServletContext e mais algum, deve herdar a classe HttpServletObject caso n√£o queira, 
+ * simplesmente    public class GreetingServiceImpl  implements  GreetingService funcionar√°
  */
 @Named("greetingService")
 public class GreetingServiceImpl extends HttpServletObject implements  GreetingService{
@@ -32,17 +32,14 @@ public class GreetingServiceImpl extends HttpServletObject implements  GreetingS
 	DaoGeometricShape daoGeometricShape;
 	@Inject
 	DaoUser daoUser;
+	
+	Logger  logger = Logger.getLogger(GreetingServiceImpl.class);
+
+//	Logger logger = Logger
 //	@Transactional
 	public String greetServer(String input) throws IllegalArgumentException {
-////		// Verify that the input is valid. 
-////		if (!FieldVerifier.isValidName(input)) {
-////			// If the input is not valid, throw an IllegalArgumentException back to
-////			// the client.
-////			throw new IllegalArgumentException(
-////			"Name must be at least 4 characters long");
-////		}
-//		
 		try{
+			logger.info("passou por aki");
 		GeometricShape geometricShape = new GeometricShape();
 		geometricShape.setName("Quadrado_1");
 		
@@ -90,4 +87,5 @@ public class GreetingServiceImpl extends HttpServletObject implements  GreetingS
 		return html.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(
 				">", "&gt;");
 	}
+	
 }

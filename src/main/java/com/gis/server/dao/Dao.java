@@ -20,7 +20,7 @@ public /*abstract */class Dao<A> {
 	SessionFactory sessionFactory;
 
 	@SuppressWarnings("unchecked")
-	@Transactional
+//	@Transactional
 	public A find(Serializable key){
 		return (A)sessionFactory.getCurrentSession().get(clazz, key);
 	}

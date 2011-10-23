@@ -18,8 +18,8 @@
 		<gwtVersion>2.3.0</gwtVersion>
 
 		<!-- GWT needs at least java 1.5 -->
-		<maven.compiler.source>1.5</maven.compiler.source>
-		<maven.compiler.target>1.5</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -75,11 +75,17 @@
 			<version>${hibernateVersion}</version>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.hibernate</groupId> -->
-		<!-- <artifactId>hibernate-validator</artifactId> -->
-		<!-- <version>4.0.0.GA</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>1.5.6</version>
+		</dependency>
 
 		<dependency>
 			<groupId>postgresql</groupId>
@@ -147,7 +153,7 @@
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<sourceDirectory>src/main/java</sourceDirectory>
-		
+
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<resources>
 			<resource>
@@ -278,7 +284,7 @@
 				<configuration>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>false</downloadJavadocs>
-					<wtpversion>2.0</wtpversion>
+					<!-- <wtpversion>2.0</wtpversion> -->
 					<additionalBuildcommands>
 						<buildCommand>
 							<name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
